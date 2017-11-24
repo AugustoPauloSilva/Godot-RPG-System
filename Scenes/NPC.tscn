@@ -1,0 +1,91 @@
+[gd_scene load_steps=5 format=1]
+
+[ext_resource path="res://Resources/mokkan.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 8.21555, 32.5992 )
+
+[sub_resource type="GDScript" id=2]
+
+script/source = "var dentro\n\nfunc _ready():\n\tdentro = 0\n\tset_process_input(true)\n\nfunc _on_Area2D_body_enter( body ):\n\tif (body.has_method(\"wanted_body\")):dentro = 1\n\nfunc _on_Area2D_body_exit( body ):\n\tdentro = 0\n\nfunc _input(event):\n\tif (Input.is_action_pressed(\"ui_accept\") and dentro == 1):\n\t\tdentro = 0\n\t\tget_tree().change_scene(\"res://Scenes/Battle.tscn\")"
+
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 17.6341, 52.6083 )
+
+[node name="NPC" type="Sprite"]
+
+transform/pos = Vector2( 164.3, 123.602 )
+transform/scale = Vector2( 3, 3 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 32, 0, 16, 16 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( -0.990274, 12.1707 )
+transform/scale = Vector2( 0.227671, 0.115655 )
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 2.8759, 0, 0, 1.09649, 4.75175, 6.64507 )
+shapes/0/trigger = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = SubResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+
+transform/pos = Vector2( 4.75175, 6.64507 )
+transform/scale = Vector2( 2.8759, 1.09649 )
+shape = SubResource( 1 )
+trigger = true
+_update_shape_index = 0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+transform/pos = Vector2( 0, 4.13354 )
+transform/scale = Vector2( 0.3, 0.243372 )
+input/pickable = false
+shapes/0/shape = SubResource( 3 )
+shapes/0/transform = Matrix32( 1, 0, 0, 0.852407, 1.67484, -11.557 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+
+transform/pos = Vector2( 1.67484, -11.557 )
+transform/scale = Vector2( 1, 0.852407 )
+shape = SubResource( 3 )
+trigger = false
+_update_shape_index = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = -40.0
+margin/top = 120.0
+margin/right = 0.0
+margin/bottom = 160.0
+bbcode/enabled = false
+bbcode/bbcode = ""
+visible_characters = -1
+
+[connection signal="body_enter" from="Area2D" to="Area2D" method="_on_Area2D_body_enter"]
+
+[connection signal="body_exit" from="Area2D" to="Area2D" method="_on_Area2D_body_exit"]
+
+

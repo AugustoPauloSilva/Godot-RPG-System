@@ -1,0 +1,12 @@
+[gd_resource type="CanvasItemMaterial" load_steps=2 format=1]
+
+[sub_resource type="CanvasItemShader" id=1]
+
+_code = { "fragment":"uniform float ativar = 0;\n\nvec4 col = tex(TEXTURE,UV);\nif (ativar == 1){\n\tcol.r*=30*col.b;\n}\nif (ativar == 2){\n\tcol.r*=100*col.a;\n\tcol.gb*=0.6*col.a;\n}\nif (ativar == 3){\n\tcol.b*=30*col.a;\n}\nif (ativar == 4){\n\tcol.rg*=5*col.a;\n}\n\nCOLOR=col;", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+
+[resource]
+
+shader/shader = SubResource( 1 )
+shader/shading_mode = 0
+shader_param/ativar = 0.0
+

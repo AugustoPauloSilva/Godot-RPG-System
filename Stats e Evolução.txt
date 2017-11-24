@@ -1,0 +1,15 @@
+Vida
+Poder Espiritual
+
+Ataque: Decide o dano dos ataques e especiais do personagem
+
+Defesa: Diminui o dano recebido de ataques
+. Decidido pela armadura
+
+Velocidade: Decide o quão rápido chegara os turnos do personagem
+. Diminuido por armaduras pesadas
+
+Foco: Altera o comportamento de especiais e ataques criticos
+
+A cada nivel o player ganha 5 pontos para distribuir entre os
+stats

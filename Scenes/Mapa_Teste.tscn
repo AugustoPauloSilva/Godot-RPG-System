@@ -1,0 +1,350 @@
+[gd_scene load_steps=22 format=1]
+
+[ext_resource path="res://Scripts/Mapa Teste.gd" type="Script" id=1]
+[ext_resource path="res://Resources/Music/little town - orchestral.ogg" type="AudioStream" id=2]
+[ext_resource path="res://Scenes/Interaction_Area.tscn" type="PackedScene" id=3]
+[ext_resource path="res://chao.tres" type="TileSet" id=4]
+[ext_resource path="res://Scenes/Player_body.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/NPC.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Resources/Inteface/Menu.png" type="Texture" id=7]
+[ext_resource path="res://Scenes/Player_Status.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Player_Equips.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Resources/Inteface/Menu_items.png" type="Texture" id=10]
+[ext_resource path="res://Resources/Inteface/Menu_Botao1.png" type="Texture" id=11]
+[ext_resource path="res://Resources/Inteface/Menu_Botao1B.png" type="Texture" id=12]
+[ext_resource path="res://Resources/Inteface/Menu_Botao2.png" type="Texture" id=13]
+[ext_resource path="res://Resources/Inteface/Menu_Botao2B.png" type="Texture" id=14]
+[ext_resource path="res://Resources/Inteface/Menu_Botao3.png" type="Texture" id=15]
+[ext_resource path="res://Resources/Inteface/Menu_Botao3B.png" type="Texture" id=16]
+[ext_resource path="res://Resources/Inteface/Menu_Botao4.png" type="Texture" id=17]
+[ext_resource path="res://Resources/Inteface/Menu_Botao4B.png" type="Texture" id=18]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 486.283, 12.0786 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 11.9507, 314.382 )
+
+[sub_resource type="GDScript" id=3]
+
+script/source = "var dentro\n\nfunc _ready():\n\tdentro = 0\n\tset_process_input(true)\n\nfunc _on_Area2D_body_enter( body ):\n\tif (body.has_method(\"wanted_body\")):dentro = 1\n\nfunc _on_Area2D_body_exit( body ):\n\tdentro = 0\n\nfunc _input(event):\n\tif (Input.is_action_pressed(\"ui_accept\") and dentro == 1):\n\t\tvar ACT_PLAYER = get_node(\"../../YSort/Player_body\")\n\t\tdentro = 0\n\t\tACT_PLAYER.anim_heal()"
+
+[node name="Mapa Teste" type="Node2D"]
+
+script/script = ExtResource( 1 )
+
+[node name="StreamPlayer" type="StreamPlayer" parent="."]
+
+stream/stream = ExtResource( 2 )
+stream/play = false
+stream/loop = true
+stream/volume_db = 0.0
+stream/autoplay = true
+stream/paused = false
+stream/loop_restart_time = 0.0
+stream/buffering_ms = 500
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 477.672, 612.957 )
+shapes/0/trigger = false
+shapes/1/shape = SubResource( 1 )
+shapes/1/transform = Matrix32( 1, 0, 0, 1, 477.672, 13.3615 )
+shapes/1/trigger = false
+shapes/2/shape = SubResource( 2 )
+shapes/2/transform = Matrix32( 1, 0, 0, 1, 11.6913, 312.324 )
+shapes/2/trigger = false
+shapes/3/shape = SubResource( 2 )
+shapes/3/transform = Matrix32( 1, 0, 0, 1, 950.334, 313.994 )
+shapes/3/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 0.0
+bounce = 0.0
+__meta__ = { "_edit_lock_":true }
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+
+transform/pos = Vector2( 477.672, 612.957 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+__meta__ = { "_edit_lock_":true }
+
+[node name="CollisionShape2D1" type="CollisionShape2D" parent="StaticBody2D"]
+
+transform/pos = Vector2( 477.672, 13.3615 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="CollisionShape2D 2" type="CollisionShape2D" parent="StaticBody2D"]
+
+transform/pos = Vector2( 11.6913, 312.324 )
+shape = SubResource( 2 )
+trigger = false
+_update_shape_index = 2
+__meta__ = { "_edit_lock_":true }
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+
+transform/pos = Vector2( 950.334, 313.994 )
+shape = SubResource( 2 )
+trigger = false
+_update_shape_index = 3
+__meta__ = { "_edit_lock_":true }
+
+[node name="Area2D" parent="StaticBody2D" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 368.589, 420.922 )
+transform/scale = Vector2( 0.423932, 0.35226 )
+z/z = 5
+script/script = SubResource( 3 )
+
+[node name="Heal" parent="StaticBody2D/Area2D"]
+
+transform/pos = Vector2( -5.33444, -137.022 )
+transform/scale = Vector2( 0.722236, 0.735463 )
+config/amount = 7
+config/lifetime = 0.5
+params/initial_size = 2.0
+color/color = Color( 1, 1, 1, 1 )
+
+[node name="YSort" type="YSort" parent="."]
+
+editor/display_folded = true
+sort/enabled = true
+
+[node name="TileMap" type="TileMap" parent="YSort"]
+
+editor/display_folded = true
+z/z = -1
+mode = 0
+tile_set = ExtResource( 4 )
+cell/size = Vector2( 32, 30 )
+cell/quadrant_size = 51
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = true
+collision/use_kinematic = false
+collision/friction = 0.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( -655324, 0, 0, 0, 1, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6, 0, 7, 0, 8, 0, 9, 0, 10, 0, 11, 0, 12, 0, 13, 0, 14, 0, 15, 0, 16, 0, 17, 0, 18, 0, 19, 0, 20, 0, 21, 0, 22, 0, 23, 0, 24, 0, 25, 0, 26, 0, 27, 0, 28, 0, 29, 0, 65536, 0, 65537, 0, 65538, 0, 65539, 0, 65540, 0, 65541, 0, 65542, 0, 65543, 0, 65544, 0, 65545, 0, 65546, 0, 65547, 0, 65548, 0, 65549, 0, 65550, 0, 65551, 1, 65552, 1, 65553, 1, 65554, 0, 65555, 0, 65556, 0, 65557, 0, 65558, 0, 65559, 0, 65560, 0, 65561, 0, 65562, 0, 65563, 0, 65564, 0, 65565, 0, 131072, 0, 131073, 0, 131074, 0, 131075, 0, 131076, 0, 131077, 0, 131078, 0, 131079, 0, 131080, 0, 131081, 0, 131082, 0, 131083, 0, 131084, 1, 131085, 0, 131086, 0, 131087, 0, 131088, 0, 131089, 0, 131090, 0, 131091, 0, 131092, 1, 131093, 0, 131094, 0, 131095, 0, 131096, 0, 131097, 0, 131098, 0, 131099, 0, 131100, 0, 131101, 0, 196608, 0, 196609, 0, 196610, 0, 196611, 0, 196612, 0, 196613, 0, 196614, 1, 196615, 1, 196616, 1, 196617, 0, 196618, 1, 196619, 0, 196620, 1, 196621, 0, 196622, 0, 196623, 0, 196624, 0, 196625, 0, 196626, 0, 196627, 0, 196628, 0, 196629, 0, 196630, 0, 196631, 0, 196632, 0, 196633, 0, 196634, 1, 196635, 0, 196636, 0, 196637, 0, 262144, 0, 262145, 0, 262146, 0, 262147, 1, 262148, 0, 262149, 1, 262150, 1, 262151, 0, 262152, 1, 262153, 1, 262154, 1, 262155, 1, 262156, 1, 262157, 0, 262158, 1, 262159, 1, 262160, 1, 262161, 0, 262162, 1, 262163, 0, 262164, 0, 262165, 1, 262166, 0, 262167, 1, 262168, 0, 262169, 1, 262170, 1, 262171, 0, 262172, 0, 262173, 0, 327680, 0, 327681, 0, 327682, 1, 327683, 0, 327684, 0, 327685, 0, 327686, 1, 327687, 0, 327688, 1, 327689, 0, 327690, 0, 327691, 0, 327692, 1, 327693, 0, 327694, 0, 327695, 1, 327696, 0, 327697, 1, 327698, 0, 327699, 0, 327700, 1, 327701, 1, 327702, 1, 327703, 1, 327704, 0, 327705, 0, 327706, 0, 327707, 0, 327708, 0, 327709, 0, 393216, 7, 393217, 7, 393218, 7, 393219, 7, 393220, 7, 393221, 7, 393222, 7, 393223, 7, 393224, 7, 393225, 7, 393226, 7, 393227, 7, 393228, 7, 393229, 7, 393230, 7, 393231, 7, 393232, 7, 393233, 7, 393234, 7, 393235, 7, 393236, 7, 393237, 7, 393238, 7, 393239, 7, 393240, 7, 393241, 7, 393242, 7, 393243, 7, 393244, 7, 393245, 7, 458752, 12, 458753, 12, 458754, 12, 458755, 12, 458756, 12, 458757, 12, 458758, 12, 458759, 12, 458760, 12, 458761, 12, 458762, 12, 458763, 12, 458764, 12, 458765, 12, 458766, 12, 458767, 12, 458768, 12, 458769, 12, 458770, 12, 458771, 12, 458772, 12, 458773, 12, 458774, 12, 458775, 12, 458776, 12, 458777, 12, 458778, 12, 458779, 12, 458780, 12, 458781, 12, 524288, 8, 524289, 8, 524290, 8, 524291, 8, 524292, 8, 524293, 8, 524294, 8, 524295, 8, 524296, 8, 524297, 8, 524298, 8, 524299, 8, 524300, 14, 524301, 12, 524302, 12, 524303, 16, 524304, 8, 524305, 8, 524306, 8, 524307, 8, 524308, 8, 524309, 8, 524310, 8, 524311, 8, 524312, 8, 524313, 8, 524314, 8, 524315, 8, 524316, 8, 524317, 8, 589824, 0, 589825, 0, 589826, 1, 589827, 0, 589828, 0, 589829, 0, 589830, 0, 589831, 0, 589832, 0, 589833, 0, 589834, 1, 589835, 0, 589836, 4, 589837, 12, 589838, 12, 589839, 10, 589840, 1, 589841, 0, 589842, 1, 589843, 0, 589844, 1, 589845, 0, 589846, 0, 589847, 1, 589848, 1, 589849, 0, 589850, 0, 589851, 1, 589852, 1, 589853, 0, 655360, 1, 655361, 0, 655362, 0, 655363, 1, 655364, 0, 655365, 0, 655366, 0, 655367, 0, 655368, 0, 655369, 0, 655370, 0, 655371, 0, 655372, 4, 655373, 12, 655374, 12, 655375, 10, 655376, 0, 655377, 0, 655378, 1, 655379, 0, 655380, 1, 655381, 1, 655382, 1, 655383, 0, 655384, 0, 655385, 0, 655386, 0, 655387, 1, 655388, 0, 655389, 0, 720896, 0, 720897, 0, 720898, 0, 720899, 0, 720900, 1, 720901, 0, 720902, 0, 720903, 0, 720904, 0, 720905, 0, 720906, 1, 720907, 0, 720908, 4, 720909, 12, 720910, 12, 720911, 10, 720912, 0, 720913, 1, 720914, 1, 720915, 0, 720916, 1, 720917, 0, 720918, 1, 720919, 0, 720920, 1, 720921, 0, 720922, 0, 720923, 1, 720924, 1, 720925, 0, 786432, 22, 786433, 1, 786434, 0, 786435, 0, 786436, 0, 786437, 0, 786438, 0, 786439, 0, 786440, 0, 786441, 0, 786442, 1, 786443, 1, 786444, 4, 786445, 12, 786446, 12, 786447, 10, 786448, 0, 786449, 0, 786450, 0, 786451, 1, 786452, 0, 786453, 1, 786454, 0, 786455, 1, 786456, 0, 786457, 0, 786458, 0, 786459, 0, 786460, 0, 786461, 0, 851968, 23, 851969, 0, 851970, 0, 851971, 0, 851972, 0, 851973, 0, 851974, 0, 851975, 0, 851976, 0, 851977, 0, 851978, 0, 851979, 0, 851980, 4, 851981, 12, 851982, 12, 851983, 10, 851984, 1, 851985, 0, 851986, 0, 851987, 1, 851988, 1, 851989, 1, 851990, 1, 851991, 1, 851992, 1, 851993, 1, 851994, 1, 851995, 0, 851996, 0, 851997, 0, 917504, 23, 917505, 0, 917506, 0, 917507, 1, 917508, 1, 917509, 1, 917510, 1, 917511, 1, 917512, 0, 917513, 1, 917514, 0, 917515, 1, 917516, 4, 917517, 12, 917518, 12, 917519, 10, 917520, 0, 917521, 0, 917522, 1, 917523, 1, 917524, 0, 917525, 0, 917526, 1, 917527, 1, 917528, 0, 917529, 1, 917530, 0, 917531, 0, 917532, 0, 917533, 0, 983040, 23, 983041, 0, 983042, 0, 983043, 0, 983044, 1, 983045, 1, 983046, 0, 983047, 0, 983048, 0, 983049, 0, 983050, 0, 983051, 0, 983052, 4, 983053, 12, 983054, 12, 983055, 10, 983056, 0, 983057, 0, 983058, 0, 983059, 0, 983060, 1, 983061, 0, 983062, 1, 983063, 1, 983064, 0, 983065, 0, 983066, 0, 983067, 0, 983068, 0, 983069, 0, 1048576, 0, 1048577, 0, 1048578, 0, 1048579, 0, 1048580, 0, 1048581, 1, 1048582, 1, 1048583, 0, 1048584, 0, 1048585, 0, 1048586, 0, 1048587, 0, 1048588, 4, 1048589, 12, 1048590, 12, 1048591, 10, 1048592, 0, 1048593, 0, 1048594, 0, 1048595, 1, 1048596, 1, 1048597, 1, 1048598, 1, 1048599, 0, 1048600, 0, 1048601, 0, 1048602, 0, 1048603, 0, 1048604, 0, 1048605, 0, 1114112, 0, 1114113, 0, 1114114, 0, 1114115, 0, 1114116, 0, 1114117, 0, 1114118, 1, 1114119, 0, 1114120, 0, 1114121, 0, 1114122, 0, 1114123, 1, 1114124, 4, 1114125, 12, 1114126, 12, 1114127, 10, 1114128, 1, 1114129, 0, 1114130, 1, 1114131, 1, 1114132, 1, 1114133, 1, 1114134, 0, 1114135, 0, 1114136, 0, 1114137, 0, 1114138, 0, 1114139, 0, 1114140, 0, 1114141, 0, 1179648, 20, 1179649, 0, 1179650, 0, 1179651, 0, 1179652, 0, 1179653, 0, 1179654, 0, 1179655, 0, 1179656, 0, 1179657, 0, 1179658, 0, 1179659, 5, 1179660, 13, 1179661, 12, 1179662, 12, 1179663, 15, 1179664, 9, 1179665, 0, 1179666, 0, 1179667, 1, 1179668, 0, 1179669, 0, 1179670, 0, 1179671, 1, 1179672, 18, 1179673, 21, 1179674, 21, 1179675, 22, 1179676, 0, 1179677, 0, 1245184, 19, 1245185, 1, 1245186, 0, 1245187, 1, 1245188, 1, 1245189, 0, 1245190, 1, 1245191, 1, 1245192, 20, 1245193, 1, 1245194, 1, 1245195, 4, 1245196, 12, 1245197, 12, 1245198, 12, 1245199, 12, 1245200, 10, 1245201, 22, 1245202, 1, 1245203, 0, 1245204, 1, 1245205, 0, 1245206, 1, 1245207, 18, 1245208, 23, 1245209, 1, 1245210, 0, 1245211, 19, 1245212, 0, 1245213, 0, 1310720, 19, 1310721, 0, 1310722, 1, 1310723, 20, 1310724, 0, 1310725, 1, 1310726, 1, 1310727, 18, 1310728, 23, 1310729, 1, 1310730, 1, 1310731, 4, 1310732, 12, 1310733, 12, 1310734, 12, 1310735, 12, 1310736, 10, 1310737, 17, 1310738, 21, 1310739, 21, 1310740, 21, 1310741, 21, 1310742, 21, 1310743, 23, 1310744, 0, 1310745, 0, 1310746, 0, 1310747, 17, 1310748, 21, 1310749, 21 )
+__meta__ = { "_edit_lock_":true }
+
+[node name="TileMap2" type="TileMap" parent="YSort/TileMap"]
+
+z/z = 2
+mode = 0
+tile_set = ExtResource( 4 )
+cell/size = Vector2( 32, 32 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = true
+collision/use_kinematic = false
+collision/friction = 0.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( 786443, 25, 786448, 25 )
+__meta__ = { "_edit_lock_":true }
+
+[node name="TileMap1" type="TileMap" parent="YSort/TileMap"]
+
+z/z = 3
+mode = 0
+tile_set = ExtResource( 4 )
+cell/size = Vector2( 32, 32 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = true
+collision/friction = 0.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( 720907, 24, 720912, 24 )
+__meta__ = { "_edit_lock_":true }
+
+[node name="Player_body" parent="YSort" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 447.572, 549.925 )
+z/z = 1
+
+[node name="Camera2D" type="Camera2D" parent="YSort/Player_body"]
+
+transform/pos = Vector2( 0.107117, 4.77591 )
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit/left = -10000000
+limit/top = -10000000
+limit/right = 10000000
+limit/bottom = 10000000
+drag_margin/h_enabled = true
+drag_margin/v_enabled = true
+smoothing/enable = false
+smoothing/speed = 5.0
+drag_margin/left = 0.2
+drag_margin/top = 0.2
+drag_margin/right = 0.2
+drag_margin/bottom = 0.2
+
+[node name="NPC" parent="YSort" instance=ExtResource( 6 )]
+
+z/z = 1
+
+[node name="Menu" type="CanvasLayer" parent="."]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+
+[node name="Board" type="Sprite" parent="Menu"]
+
+visibility/visible = false
+transform/pos = Vector2( 467.275, 312.019 )
+texture = ExtResource( 7 )
+__meta__ = { "_edit_lock_":true }
+
+[node name="Menu3" type="Node2D" parent="Menu/Board"]
+
+editor/display_folded = true
+visibility/visible = false
+__meta__ = { "_edit_lock_":true }
+
+[node name="Player1" parent="Menu/Board/Menu3" instance=ExtResource( 8 )]
+
+transform/pos = Vector2( 0, -179 )
+
+[node name="Menu2" type="Node2D" parent="Menu/Board"]
+
+visibility/visible = false
+__meta__ = { "_edit_lock_":true }
+
+[node name="Player1" parent="Menu/Board/Menu2" instance=ExtResource( 9 )]
+
+[node name="Items" type="Sprite" parent="Menu/Board/Menu2"]
+
+transform/pos = Vector2( 0, 107.021 )
+texture = ExtResource( 10 )
+
+[node name="Menu1" type="Node2D" parent="Menu/Board"]
+
+editor/display_folded = true
+visibility/visible = false
+__meta__ = { "_edit_lock_":true }
+
+[node name="Botao1" type="TextureButton" parent="Menu/Board/Menu1"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = -199.0
+margin/top = -225.0
+margin/right = 201.0
+margin/bottom = -159.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 11 )
+textures/pressed = ExtResource( 12 )
+textures/hover = ExtResource( 11 )
+textures/disabled = ExtResource( 11 )
+textures/focused = ExtResource( 12 )
+__meta__ = { "_edit_lock_":true }
+
+[node name="Botao2" type="TextureButton" parent="Menu/Board/Menu1"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = -199.0
+margin/top = -134.0
+margin/right = 201.0
+margin/bottom = -69.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 13 )
+textures/pressed = ExtResource( 14 )
+textures/hover = ExtResource( 13 )
+textures/disabled = ExtResource( 13 )
+textures/focused = ExtResource( 14 )
+__meta__ = { "_edit_lock_":true }
+
+[node name="Botao3" type="TextureButton" parent="Menu/Board/Menu1"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = -199.0
+margin/top = -45.0
+margin/right = 201.0
+margin/bottom = 20.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 15 )
+textures/pressed = ExtResource( 16 )
+textures/hover = ExtResource( 15 )
+textures/disabled = ExtResource( 15 )
+textures/focused = ExtResource( 16 )
+__meta__ = { "_edit_lock_":true }
+
+[node name="Botao4" type="TextureButton" parent="Menu/Board/Menu1"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = -199.0
+margin/top = 160.0
+margin/right = 201.0
+margin/bottom = 225.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 17 )
+textures/pressed = ExtResource( 18 )
+textures/hover = ExtResource( 17 )
+textures/disabled = ExtResource( 17 )
+textures/focused = ExtResource( 18 )
+__meta__ = { "_edit_lock_":true }
+
+[connection signal="pressed" from="Menu/Board/Menu1/Botao1" to="." method="_on_Botao1_pressed"]
+
+[connection signal="pressed" from="Menu/Board/Menu1/Botao2" to="." method="_on_Botao2_pressed"]
+
+[connection signal="pressed" from="Menu/Board/Menu1/Botao3" to="." method="_on_Botao3_pressed"]
+
+[connection signal="pressed" from="Menu/Board/Menu1/Botao4" to="." method="_on_Botao4_pressed"]
+
+
+[editable path="StaticBody2D/Area2D"]

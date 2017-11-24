@@ -1,0 +1,32 @@
+3 barras: HP SP ST
+
+Defesa:
+. pode ser feita durante carregamento de ação
+. faz carregamento de ação mais lento
+. é cancelada no turno do jogador
+. diminui pela metade dano normal e chance de debuff
+
+Especiais:
+. tempo de cast proporcional ao carregamento de ação e gasto de SP
+. proporção decidida pelo status Foco
+. só são defendidos caso a defesa se inicie antes do cast
+
+Modificadores de Status:
+Todos os modificadores fazem dano em porcentagem
+Eles podem aparecer em golpes criticos e especiais
+. Queimando
+. Congelando
+. Choque
+
+Personagens podem ser fracos ou fortes contra cada modificador
+aumentando ou diminuindo as porcentagens de chance e dano daquele
+modificador
+
+inflamável: fraco a Queimando
+não inflamável: forte a Queimando
+
+sangue frio: fraco a Congelando
+sangue quente: forte a Congelando
+
+condutor: fraco a Choque
+isolante: forte a Choque

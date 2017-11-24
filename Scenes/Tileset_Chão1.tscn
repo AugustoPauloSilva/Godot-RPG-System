@@ -1,0 +1,346 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://Resources/magecity - by Daniel Harris.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 16, 16 )
+
+[node name="Tileset_Chão1" type="Node2D"]
+
+[node name="Grama1" type="Sprite" parent="."]
+
+transform/pos = Vector2( 16, 16 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="Grama2" type="Sprite" parent="."]
+
+transform/pos = Vector2( 16, 80 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 128, 1152, 32, 32 )
+
+[node name="Piso1" type="Sprite" parent="."]
+
+transform/pos = Vector2( 80, 16 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 32, 0, 32, 32 )
+
+[node name="Piso2" type="Sprite" parent="."]
+
+transform/pos = Vector2( 80, 80 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 32, 32, 32, 32 )
+
+[node name="Pavimento_E" type="Sprite" parent="."]
+
+transform/pos = Vector2( 144, 80 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 0, 320, 32, 32 )
+
+[node name="Pavimento_E_C" type="Sprite" parent="."]
+
+transform/pos = Vector2( 144, 144 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 0, 288, 32, 32 )
+
+[node name="Pavimento_E_B" type="Sprite" parent="."]
+
+transform/pos = Vector2( 144, 208 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 0, 352, 32, 32 )
+
+[node name="Pavimento_C" type="Sprite" parent="."]
+
+transform/pos = Vector2( 16, 144 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 32, 288, 32, 32 )
+
+[node name="Pavimento_C_B" type="Sprite" parent="."]
+
+transform/pos = Vector2( 16, 208 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 32, 352, 32, 32 )
+
+[node name="Pavimento_C_D" type="Sprite" parent="."]
+
+transform/pos = Vector2( 336, 208 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 64, 288, 32, 32 )
+
+[node name="Pavimento_D" type="Sprite" parent="."]
+
+transform/pos = Vector2( 80, 144 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 64, 320, 32, 32 )
+
+[node name="Pavimento_D_B" type="Sprite" parent="."]
+
+transform/pos = Vector2( 80, 208 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 64, 352, 32, 32 )
+
+[node name="Pavimento1" type="Sprite" parent="."]
+
+transform/pos = Vector2( 208, 144 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 32, 320, 32, 32 )
+
+[node name="Pavimento2" type="Sprite" parent="."]
+
+transform/pos = Vector2( 208, 208 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 96, 288, 32, 32 )
+
+[node name="Pavimento3" type="Sprite" parent="."]
+
+transform/pos = Vector2( 272, 144 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 96, 320, 32, 32 )
+
+[node name="Pavimento4" type="Sprite" parent="."]
+
+transform/pos = Vector2( 272, 208 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 128, 288, 32, 32 )
+
+[node name="Pavimento5" type="Sprite" parent="."]
+
+transform/pos = Vector2( 336, 144 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 128, 320, 32, 32 )
+
+[node name="Agua_E" type="Sprite" parent="."]
+
+transform/pos = Vector2( 144, 16 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 0, 224, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Agua_E"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Agua_E/StaticBody2D"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Agua_E_C" type="Sprite" parent="."]
+
+transform/pos = Vector2( 208, 16 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 0, 192, 32, 32 )
+
+[node name="StaticBody2D1" type="StaticBody2D" parent="Agua_E_C"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Agua_E_C/StaticBody2D1"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Agua_E_D" type="Sprite" parent="."]
+
+transform/pos = Vector2( 208, 80 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 96, 224, 32, 32 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Agua_E_D"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Agua_E_D/StaticBody2D2"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Agua_E_C_D" type="Sprite" parent="."]
+
+transform/pos = Vector2( 336, 80 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 96, 192, 32, 32 )
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Agua_E_C_D"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Agua_E_C_D/StaticBody2D3"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Agua_C" type="Sprite" parent="."]
+
+transform/pos = Vector2( 272, 16 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 32, 192, 32, 32 )
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Agua_C"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Agua_C/StaticBody2D4"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Agua_C_D" type="Sprite" parent="."]
+
+transform/pos = Vector2( 272, 80 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 64, 192, 32, 32 )
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="Agua_C_D"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Agua_C_D/StaticBody2D5"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Agua_D" type="Sprite" parent="."]
+
+transform/pos = Vector2( 336, 16 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 64, 224, 32, 32 )
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="Agua_D"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Agua_D/StaticBody2D6"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Fonte_P1" type="Sprite" parent="."]
+
+transform/pos = Vector2( 400, 16 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 32, 416, 32, 32 )
+
+[node name="Fonte_P2" type="Sprite" parent="."]
+
+transform/pos = Vector2( 400, 80 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 32, 448, 32, 32 )
+
+[node name="StaticBody2D7" type="StaticBody2D" parent="Fonte_P2"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fonte_P2/StaticBody2D7"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+
